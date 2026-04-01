@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+// messages defined in this proto file will be available in rust module `ebash::config::*`
+package ebash.config;
+
+// Ebash configuration
+// This message will be base64 encoded and stored in a toml config like this:
+// config = "base64_encoded_protobuf_message"
+message Config {
+  // e.g. "gpt-4.1"
+  optional string model = 1;
+  // e.g. "sk-proj-D3kP9xQa7Lm2VnR8cTy4HbW6zFs1JeK0pXv5NgCq2MrY7Zdu"
+  optional string openai_api_key = 2;
+
+  // Same semantics as RUST_LOG env var: https://docs.rs/env_logger/latest/env_logger/#enabling-logging
+  // but lower priority
+  optional string log_level = 3;
+}
